@@ -10,34 +10,22 @@ export function Home() {
 
 	return (
 		<div className="text-center mt-5">
-            <div>
-                <h1>To Do's</h1>
-                <input onChange={e => setTodo(e.target.value)} value={todo} />
-			    <button
-				onClick={() => {
-					setList([...list, todo]);
-					setTodo("");
-				}}>
-				Add
-			    </button>
-			{list.map((item, index) => {
-                <div 
-                    key={index}
-                    className="row"
-                    onMouseEnter={() => setTrash(!trash)}
-                    onMouseLeave={() => setTrash(!trash)}>
-                    <div className="d-flex justify-content-end col">
-                        <p>{item}</p>
-                    </div>
-                    <div class="d-flex justify-content-end col">
-                        {!trash === false ? ( 
-                    <button>
-                        <i class="fas fa-times"></i>
-                    </button>
-                    ) : ("")}
-                    </div>
-                </div>    
-			})}
-        </div>);  
+			<div>
+				<h1>To Do's</h1>
+				<input onChange={e => setTodo(e.target.value)} value={todo} />
+				<button
+					onClick={() => {
+						setList([...list, todo]);
+						setTodo("");
+					}}>
+					Add
+				</button>
+				{list.map((item, index) => {
+					return <p key={index}>{item}</p>;
+				})}
+			</div>
+		</div>
+	);
+}
 
 export default Home;
