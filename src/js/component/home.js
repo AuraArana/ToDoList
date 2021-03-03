@@ -7,6 +7,7 @@ import rigoImage from "../../img/rigo-baby.jpg";
 export function Home() {
 	const [todo, setTodo] = useState("");
 	const [list, setList] = useState([]);
+	const [trash, setTrash] = useState(false);
 
 	return (
 		<div className="text-center mt-5">
@@ -21,7 +22,24 @@ export function Home() {
 					Add
 				</button>
 				{list.map((item, index) => {
-					return <p key={index}>{item}</p>;
+					<div
+						key={index}
+						className="container-row"
+						onMouseEnter={() => setTrash(!trash)}
+						onMouseLeave={() => setTrash(!trash)}>
+						<div className="d-flex justify-content-start col">
+							<p>{item}</p>
+						</div>
+						<div className="d-flex justify-content-end col">
+							{trash === false ? (
+								<button>
+									<i className="fas fa-times"></i>
+								</button>
+							) : (
+								""
+							)}
+						</div>
+					</div>;
 				})}
 			</div>
 		</div>
